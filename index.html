@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--
+	Strongly Typed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Capybara Sheet Cheat</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body class="homepage is-preload">
+    <div id="page-wrapper">
+      <!-- Header -->
+      <section
+        id="header"
+        style="
+          background-image: url(images/img3.jpg);
+          background-repeat: repeat-x;
+        "
+      >
+        <div class="container">
+          <!-- Logo -->
+          <h1 style="color: #ccaa00;">Capybara Cheat Sheet</h1>
+          <p id="nour" style="color: wheat; font-size: large; font-family: 'Times New Roman', Times, serif;">by Nour Alaa Eldin Aly.</p>
+
+          <!-- Nav -->
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" style="background-image: url(images/img8.jpg); margin-top: -3.2em;">
+        <div class="container">
+         
+          <div class="row aln-center">
+            <div class="col-6 col-6-medium col-12-small">
+              <!-- Feature -->
+              <section>
+                <header>
+                  <h3 style="color: #800015;">Navigation</h3>
+                </header>
+                <ul style="text-align: left;">
+                  <li>visit('/sessions/new')</li>
+                  <li>visit(root_path)</li>
+                </ul>
+              </section>
+            </div>
+            <div class="col-6 col-6-medium col-12-small">
+              <!-- Feature -->
+              <section>
+                <header>
+                  <h3 style="color: #800015;">Clicking links and buttons</h3>
+                </header>
+                <ul style="text-align: left;">
+                  <li>click_link('id, class or text')</li>
+                  <li>
+                    click_button('id, class or text') &rarr; click_button('Sign
+                    in')
+                  </li>
+                  <li>
+                    click('id, class or text') # Either a link or a button
+                  </li>
+                  <li>page.find("#id or .class").click</li>
+                  <li>
+                    link = "a[href='/contacts/1/edit']"
+                    <strong style="color: #cc2200;">then</strong>
+                    find(link).click
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" style="background-image: url(images/img8.jpg);">
+        <div class="container">
+          <div class="row aln-center">
+            <div class="col-6 col-6-medium col-12-small">
+              <!-- Feature -->
+              <section>
+                <header>
+                  <h3 style="color: #800015;">Interacting with forms</h3>
+                </header>
+                <ul style="text-align: left;">
+                  <li>fill_in('id, class or text', with: 'text')</li>
+                  <ul>
+                    <p style="color: #2b2d2f; text-align: left;">
+                      fill_in("contact_first_name", with: "Adam") &rarr;
+                      contact_first_name is an id
+                    </p>
+                    <p
+                      style="
+                        color: #2b2d2f;
+                        text-align: left;
+                        margin-top: -1em;
+                      "
+                    >
+                      fill_in('First Name', with: 'John')
+                    </p>
+                    <p
+                      style="
+                        color: #2b2d2f;
+                        text-align: left;
+                        margin-top: -1em;
+                      "
+                    >
+                      fill_in("hiring_contract_name", with: "NewHc",
+                      <strong style="color: #cc2200;"> :visible => false</strong
+                      >)
+                      <strong style="color: #330009;"
+                        >this is used in case the field isn't visible</strong
+                      >
+                    </p>
+                    <p
+                      style="
+                        color: #2b2d2f;
+                        text-align: left;
+                        margin-top: -1em;
+                      "
+                    >
+                      page.first("#contact_first_name").set("Alex") &rarr;
+                      <strong style="color: #330009;"
+                        >this is used in case you have two fields with same id
+                        and you want to fill the first field</strong
+                      >
+                    </p>
+                  </ul>
+                  <li style="margin-top: -25px; text-align: left;">
+                    check('A checkbox')
+                    <ul>
+                      <p style="text-align: left;">
+                        check('I accept the terms of the site')
+                      </p>
+                    </ul>
+                  </li>
+                  <li style="margin-top: -1em;">uncheck('A checkbox')</li>
+                  <li>choose('A radio button')</li>
+                  <ul>
+                    <p
+                      style="
+                        color: #2b2d2f;
+                        text-align: left;
+                        margin-top: -1em;
+                      "
+                    >
+                      choose('Male')
+                    </p>
+                  </ul>
+                  <li style="margin-top: -1em;">
+                    select('Option', from: 'Select box')
+                  </li>
+                  <li>
+                    find(:select, from, options).find(:option, value,
+                    options).select_option
+                    <ul>
+                      <p style="text-align: left;">
+                        find('#contact_age').find(:xpath,
+                        'option[2]').select_option
+                      </p>
+                    </ul>
+                  </li>
+                  <li>attach_file('Image', '/path/to/image.jpg')</li>
+                </ul>
+              </section>
+            </div>
+            <div class="col-6 col-6-medium col-12-small">
+              <!-- Feature -->
+              <section>
+                <header>
+                  <h3 style="color: #800015;">Querying: Predicates / Matchers</h3>
+                </header>
+                <ul style="text-align: left;">
+                  <li>expect(page).to have_button('Save')</li>
+                  <li>
+                    expect(page).to have_no_button('Save')
+                    <strong style="color: #330009;">or</strong>
+                    expect(page).not_to have_button('Save')
+                  </li>
+                  <li>expect(page).to have_link('users-index-nav')</li>
+                  <li>
+                    expect(page).to have_content('Account created successfully')
+                  </li>
+                  <li>expect(page).to have_selector()</li>
+                  <li>expect(page).to have_table()</li>
+                  <li>expect(page).to have_xpath()</li>
+                  <li>expect(current_path).to eq(users_path)</li>
+                  <li>page.should have_content('welcome')</li>
+                  <li>
+                    page.should have_no_content('welcome')
+                    <strong style="color: #330009;">or</strong> page.should_not
+                    have_content('welcome')
+                  </li>
+                  <li>
+                    page.has_css?
+                    <strong style="color: #330009;"> /</strong> page.has_no_css?
+                  </li>
+                  <li>
+                    page.has_xpath?
+                    <strong style="color: #330009;"> /</strong>
+                    page.has_no_xpath?
+                  </li>
+                  <li>
+                    page.has_content?
+                    <strong style="color: #330009;"> /</strong>
+                    page.has_no_content?
+                  </li>
+                  <li>
+                    page.has_link?
+                    <strong style="color: #330009;"> /</strong>
+                    page.has_no_link?
+                  </li>
+                  <li>
+                    page.has_button?
+                    <strong style="color: #330009;"> /</strong>
+                    page.has_no_button?
+                  </li>
+                  <li>
+                    page.has_field?
+                    <strong style="color: #330009;"> /</strong>
+                    page.has_no_field?
+                  </li>
+                  <li>
+                    page.has_select?
+                    <strong style="color: #330009;"> /</strong>
+                    page.has_no_select?
+                  </li>
+                  <li>
+                    page.has_checked_field?
+                    <strong style="color: #330009;"> /</strong>
+                    page.has_unchecked_field?
+                  </li>
+                  <li>expect(response).to have_http_status(200)</li>
+                </ul>
+              </section>
+			</div>
+          </div>
+        </div>
+      </section>
+ <section id="features" style="background-image: url(images/img8.jpg);">
+        <div class="container">
+          <!-- <header>
+							<h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
+						</header> -->
+          <div class="row aln-center">
+            <div class="col-6 col-6-medium col-12-small">
+              <!-- Feature -->
+              <section>
+                <header>
+                  <h3 style="color: #800015;">Scoping</h3>
+                </header>
+                 <ul style="text-align: left;">
+              <li>
+                within( '.class') do <br />
+                <ol style="margin-bottom: -5px;">
+                  fill_in('First Name', with: 'John')
+                </ol>
+                end
+              </li>
+            </ul>
+            <ul style="text-align: left;">
+              <li style="margin-top: -30px;">
+                within_fieldset
+              </li>
+              <li>within_table</li>
+            </ul>
+              </section>
+            </div>
+            <div class="col-6 col-6-medium col-12-small">
+              <!-- Feature -->
+              <section>
+                <header>
+            <h3 style="color: #800015;">Response / Status Code</h3>
+                </header>
+                 <ul style="text-align: left;">
+              <li>
+                expect(response).to have_http_status(200)
+              </li>
+              <li>
+                page.status_code.should == 200
+              </li>
+			</ul>
+			<h3 style="color: #800015;">Debugging</h3>
+			<ul style="text-align: left;">
+				<li>save_and_open_page</li>
+			</ul>
+			<h3 style="color: #800015;">Sleep</h3>
+			<li style="text-align: left;">    sleep seconds &rarr; sleep 30
+</li>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Banner -->
+      <!-- <section id="banner">
+					<div class="container">
+						<p>Use this space for <strong>profound thoughts</strong>.<br />
+						Or an enormous ad. Whatever.</p>
+					</div>
+				</section> -->
+
+      <!-- Main -->
+     
+
+
+      <!-- Footer -->
+      <section  style="background-image: url(images/img8.jpg);">
+ 
+            <p style="text-align: center;">&copy;2020 Nour Alaa Eldin | All rights reserved.</p>
+        
+      </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
